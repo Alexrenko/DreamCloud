@@ -20,12 +20,12 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        //CommandMessage inboundCommand = null;
-        //if (msg instanceof CommandMessage)
-        //    inboundCommand = (CommandMessage) msg;
-        //if (inboundCommand.getCommand() == CommandList.AUTH) {
-        //    model.setAuthorized(inboundCommand.isAuthorized());
-        //}
+        CommandMessage inboundCommand = null;
+        if (msg instanceof CommandMessage)
+            inboundCommand = (CommandMessage) msg;
+        if (inboundCommand.getCommand() == CommandList.AUTH) {
+            model.setAuthorized(inboundCommand.isAuthorized());
+        }
     }
 
     @Override
