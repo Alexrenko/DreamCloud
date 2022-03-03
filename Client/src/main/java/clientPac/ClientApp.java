@@ -1,5 +1,8 @@
+package clientPac;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -8,16 +11,22 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class Client extends Application {
+public class ClientApp extends Application implements Initializable {
 
     public static void main(String[] args) {
-        Client.launch(args);
+        ClientApp.launch(args);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     @Override
     public void start(Stage primaryStage) {
-        Parent auth;
+        Parent auth, main;
         URL authSceneURL;
         String styleSource;
 
@@ -45,5 +54,6 @@ public class Client extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(authScene);
         primaryStage.show();
+
     }
 }

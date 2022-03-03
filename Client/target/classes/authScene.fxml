@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="authBaseBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthController">
+<VBox fx:id="authBaseBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientPac.gui.AuthController">
     <VBox alignment="CENTER" style="-fx-background-color: #202023" VBox.vgrow="ALWAYS">
         <HBox alignment="TOP_RIGHT">
             <Label onMouseClicked="#clickCloseLabel" style="-fx-text-fill: #a8720f" text="X">
