@@ -9,34 +9,39 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class FileService {
-    private ObservableList<String> fileNameList;
+    //private ObservableList<String> fileNameList;
+    private ArrayList<String> fileNameList;
     private boolean isPossibleToCreate;
-    private ObservableList<File> currentFileList;
+    //private ObservableList<File> currentFileList;
+    ArrayList<Path> currentFileList;
     private File currentDirectory;
 
     public FileService() {
-        fileNameList = FXCollections.observableArrayList();
-        currentFileList = FXCollections.observableArrayList();
+        //fileNameList = FXCollections.observableArrayList();
+        fileNameList = new ArrayList<>();
+        //currentFileList = FXCollections.observableArrayList();
+        currentFileList = new ArrayList<>();
         isPossibleToCreate = false;
     }
 
-    public ObservableList<String> getFileNameList() {
-        return fileNameList;
-    }
-
     public void showRoots() {
-        File[] localDiscs = File.listRoots();
+        File[] Discs = File.listRoots();
+        ArrayList<Path> localDiscs = new ArrayList<>();
+        for(File file : Discs) {
+            localDiscs.add(file.toPath());
+        }
         isPossibleToCreate = false;
         setCurrentDirectory(null);
         currentFileList.clear();
         fileNameList.clear();
-        currentFileList.addAll(Arrays.asList(localDiscs));
-        for(File file : currentFileList) {
-            fileNameList.add(file.getAbsolutePath());
+        currentFileList.addAll(localDiscs);
+        for(Path path : currentFileList) {
+            fileNameList.add(path.getRoot().toString());
         }
     }
 
@@ -46,6 +51,10 @@ public class FileService {
 
     public void setCurrentDirectory(File directory) {
         currentDirectory = directory;
+    }
+
+    public File getCurrentDirectory() {
+        return currentDirectory;
     }
 
     public String getNameCurrentDirectory() {
@@ -76,7 +85,7 @@ public class FileService {
 
     public void openDirectory(int index){
         if (index != -1) {
-            Path path = Paths.get(currentFileList.get(index).getAbsolutePath());
+            Path path = currentFileList.get(index);
             if (Files.exists(path) && Files.isDirectory(path)) {
                 updateCurrentFileList(path);
                 updateFileNameList(currentFileList);
@@ -98,29 +107,48 @@ public class FileService {
         }
     }
 
+    public void updateLists() {
+        updateCurrentFileList(currentDirectory.toPath());
+        updateFileNameList(currentFileList);
+    }
+
+    public ArrayList<Path> getCurrentFileList() {
+        return currentFileList;
+    }
+
     public void updateCurrentFileList(Path path) {
         try {
             DirectoryStream<Path> paths = Files.newDirectoryStream(path);
             currentFileList.clear();
             for(Path currentPath : paths)
-                currentFileList.add(currentPath.toFile());
+                currentFileList.add(currentPath);
             currentFileList.sort(new byDirectoryComparator());
         } catch (IOException e) {
             System.out.println("SWW during openDirectory in Model");
         }
     }
 
-    public void updateFileNameList(ObservableList<File> files) {
-        fileNameList.clear();
-        for(File file : files)
-            fileNameList.add(file.getName());
+    //public ObservableList<String> getFileNameList() {
+    //    return fileNameList;
+    //}
+
+    public ArrayList<String> getFileNameList() {
+        return fileNameList;
     }
 
-    private static class byDirectoryComparator implements Comparator<File> {
+    public void updateFileNameList(ArrayList<Path> paths) {
+        fileNameList.clear();
+
+        for(Path path : paths)
+            fileNameList.add(path.getFileName().toString());
+    }
+
+    private static class byDirectoryComparator implements Comparator<Path> {
+
         @Override
-        public int compare(File first, File second) {
-            boolean isDirectoryFirst = Files.isDirectory(first.toPath());
-            boolean isDirectorySecond = Files.isDirectory(second.toPath());
+        public int compare(Path first, Path second) {
+            boolean isDirectoryFirst = Files.isDirectory(first);
+            boolean isDirectorySecond = Files.isDirectory(second);
 
             return isDirectoryFirst == isDirectorySecond ?
                     first.compareTo(second) : isDirectoryFirst ?

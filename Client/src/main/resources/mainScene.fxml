@@ -57,7 +57,7 @@
                 </HBox>
                 <HBox>
                     <Button fx:id="leftBackButton" prefHeight="25.0" prefWidth="55.0" text="Back" onMouseClicked="#clickLeftBackButton"/>
-                    <TextField fx:id="leftTextField" HBox.hgrow="ALWAYS">
+                    <TextField fx:id="leftCurDirField" HBox.hgrow="ALWAYS">
                         <HBox.margin>
                             <Insets left="5.0" />
                         </HBox.margin></TextField>
@@ -68,8 +68,8 @@
                     </VBox.margin></ListView>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                <Button prefHeight="25.0" prefWidth="64.0"> to left </Button>
-                <Button prefHeight="25.0" prefWidth="64.0"> to right </Button>
+                <Button fx:id="sendButton" prefHeight="25.0" prefWidth="64.0" text="send" onMouseClicked="#clickSendButton"/>
+                <Button fx:id="downloadButton" prefHeight="25.0" prefWidth="64.0" text="download" onMouseClicked="#clickDownloadButton"/>
             </VBox>
             <VBox GridPane.columnIndex="3" GridPane.rowIndex="0">
                 <HBox spacing="5.0">
@@ -83,13 +83,13 @@
                     </padding>
                 </HBox>
                 <HBox>
-                    <Button prefHeight="25.0" prefWidth="55.0" text="Send" />
-                    <TextField fx:id="sendField" HBox.hgrow="ALWAYS">
+                    <Button prefHeight="25.0" prefWidth="55.0" text="Back" onMouseClicked="#clickRightBackButton" />
+                    <TextField fx:id="rightCurDirField" HBox.hgrow="ALWAYS">
                         <HBox.margin>
                             <Insets left="5.0" />
                         </HBox.margin></TextField>
                 </HBox>
-                <ListView fx:id="rightList" minHeight="400">
+                <ListView fx:id="rightList" minHeight="400" onMouseClicked="#clickRightList">
                     <VBox.margin>
                         <Insets top="5.0" />
                     </VBox.margin></ListView>

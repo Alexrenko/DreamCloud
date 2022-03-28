@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="regBaseBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientPac.gui.RegController">
+    <VBox alignment="CENTER" style="-fx-background-color: #202023" VBox.vgrow="ALWAYS">
+        <HBox alignment="TOP_RIGHT">
+            <Label onMouseClicked="#clickCloseLabel" style="-fx-text-fill: #a8720f" text="X">
+                <HBox.margin>
+                    <Insets right="10.0" top="8.0" />
+                </HBox.margin></Label>
+        </HBox>
+        <HBox>
+            <Label contentDisplay="CENTER" prefWidth="230" style="-fx-text-fill: #bfbfc0; -fx-font-size: 18; -fx-font-weight: 900;" text="DreamCloud">
+                <HBox.margin>
+                    <Insets bottom="5.0" left="35.0" />
+                </HBox.margin></Label>
+        </HBox>
+        <Label fx:id="infoLabel" style="-fx-text-fill: #202023; -fx-font-size: 13;" text="информация">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin></Label>
+        <Label style="-fx-text-fill: #a8720f; -fx-font-size: 13;" text="Введите логин:">
+         <padding>
+            <Insets right="107.0" />
+         </padding></Label>
+        <TextField fx:id="textFieldLogin" style="-fx-background-color: #141415; -fx-font-size: 13; -fx-text-fill: #bfbfc0; -fx-border-color: #48484d;">
+            <VBox.margin>
+                <Insets bottom="15.0" left="35.0" right="35.0" top="5.0" />
+            </VBox.margin></TextField>
+        <Label style="-fx-text-fill: #a8720f; -fx-font-size: 13;" text="Введите пароль:">
+         <padding>
+            <Insets right="97.0" />
+         </padding></Label>
+        <TextField fx:id="textFieldPass" style="-fx-background-color: #141415; -fx-font-size: 13; -fx-text-fill: #bfbfc0; -fx-border-color: #48484d;">
+            <VBox.margin>
+                <Insets bottom="20.0" left="35.0" right="35.0" top="5.0" />
+            </VBox.margin></TextField>
+
+        <Button fx:id="sendButton" alignment="CENTER" onAction="#clickSendButton" prefWidth="100" style="-fx-background-color: #154d34; -fx-text-fill: #bfbfc0; -fx-font-weight: 700; -fx-border-color: #000000;" text="Отправить">
+            <VBox.margin>
+                <Insets bottom="30.0" />
+            </VBox.margin></Button>
+    </VBox>
+</VBox>
