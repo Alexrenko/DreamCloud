@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class ClientApp extends Application implements Initializable {
 
@@ -26,19 +27,15 @@ public class ClientApp extends Application implements Initializable {
 
     @Override
     public void start(Stage primaryStage) {
-        Parent auth, main;
+        Parent auth;
         URL authSceneURL;
-        String styleSource;
 
-        //Подключаем файлы authScene.fxml и auth.css
+        //Подключаем authScene.fxml
 
         try {
             authSceneURL = getClass().getResource("/authScene.fxml");
             if (authSceneURL == null) throw new RuntimeException("Нет доступа к файлу authScene.fxml");
-            styleSource = Objects.requireNonNull(getClass().getResource("/auth.css")).toExternalForm();
             auth = FXMLLoader.load(authSceneURL);
-        } catch (NullPointerException e) {
-            throw new RuntimeException("Нет доступа к файлу auth.css");
         } catch (IOException e) {
             throw new RuntimeException("SWW during FXML loading");
         }
@@ -50,10 +47,8 @@ public class ClientApp extends Application implements Initializable {
         primaryStage.setTitle("DreamCloud");
         primaryStage.setResizable(false);
         Scene authScene = new Scene(auth);
-        authScene.getStylesheets().add(styleSource);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(authScene);
         primaryStage.show();
-
     }
 }

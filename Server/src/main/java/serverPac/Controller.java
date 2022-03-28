@@ -8,7 +8,7 @@ public class Controller {
     private static final int carrierPORT = 8189;
 
     public Controller() {
-        model = new Model();
+        model = Model.getModel();
         model.startChannels(commandPORT, carrierPORT);
     }
 }

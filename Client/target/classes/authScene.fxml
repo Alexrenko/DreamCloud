@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="authBaseBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientPac.gui.AuthController">
+<VBox fx:id="authBaseBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientPac.gui.AuthController">
     <VBox alignment="CENTER" style="-fx-background-color: #202023" VBox.vgrow="ALWAYS">
         <HBox alignment="TOP_RIGHT">
             <Label onMouseClicked="#clickCloseLabel" style="-fx-text-fill: #a8720f" text="X">
@@ -15,24 +15,27 @@
         <HBox>
             <Label contentDisplay="CENTER" prefWidth="230" style="-fx-text-fill: #bfbfc0; -fx-font-size: 18; -fx-font-weight: 900;" text="DreamCloud">
                 <HBox.margin>
-                    <Insets left="35.0" top="10.0" />
+                    <Insets bottom="10.0" left="35.0" />
                 </HBox.margin></Label>
         </HBox>
-
+        <Label style="-fx-text-fill: #202023; -fx-font-size: 13;" text="информация">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin></Label>
         <TextField fx:id="textFieldLogin" style="-fx-background-color: #141415; -fx-font-size: 13; -fx-text-fill: #bfbfc0; -fx-border-color: #48484d;">
             <VBox.margin>
-                <Insets bottom="5.0" left="35.0" right="35.0" top="25.0" />
+                <Insets bottom="5.0" left="35.0" right="35.0" />
             </VBox.margin></TextField>
         <TextField fx:id="textFieldPass" style="-fx-background-color: #141415; -fx-font-size: 13; -fx-text-fill: #bfbfc0; -fx-border-color: #48484d;">
             <VBox.margin>
                 <Insets bottom="20.0" left="35.0" right="35.0" top="5.0" />
             </VBox.margin></TextField>
         <HBox alignment="CENTER">
-            <Label style="-fx-text-fill: #a8720f; -fx-font-size: 14; -fx-font-weight: 600;" text="Параметры" onMouseClicked="#clickParamLabel">
+            <Label onMouseClicked="#clickParamLabel" style="-fx-text-fill: #a8720f; -fx-font-size: 14; -fx-font-weight: 600;" text="Параметры">
                 <HBox.margin>
                     <Insets right="20.0" />
                 </HBox.margin></Label>
-            <Label style="-fx-text-fill: #a8720f; -fx-font-size: 14; -fx-font-weight: 600;" text="Регистрация">
+            <Label onMouseClicked="#clickRegLabel" style="-fx-text-fill: #a8720f; -fx-font-size: 14; -fx-font-weight: 600;" text="Регистрация">
                 <HBox.margin>
                     <Insets left="20.0" />
                 </HBox.margin></Label>
